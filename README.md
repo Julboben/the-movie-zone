@@ -4,9 +4,11 @@ A school project recreating a late-90's movie website: a home page and six genre
 pages with frames, blinking GIFs, banner ads, a MIDI soundtrack, a webring and a
 visitor counter, built with modern, accessible HTML and CSS underneath.
 
-![Desktop screenshot](docs/screenshot.webp)
+![Home page on desktop](docs/screenshot.webp)
 
-<img src="docs/screenshot-mobile.webp" alt="Mobile screenshot" width="250" />
+![Science Fiction page on desktop](docs/screenshot-genre.webp)
+
+<img src="docs/screenshot-mobile.webp" alt="Home page on a phone" width="250" />
 
 ## How to Run
 
@@ -58,42 +60,127 @@ will block the MIDI player from loading `music/blade-runner.mid`.
 
 ## Design
 
-The look is a late-90's fan site, built with the materials of the time:
+The site looks like a fan site from 1999, made with what a webmaster had back
+then. Under the hood it's modern, accessible HTML and CSS.
 
-- **GeoCities style:** a tiled star background, Times New Roman, bright HTML 3.2
-  named colors, black `<table border>`-style boxes, `<hr>` dividers, a marquee,
-  blinking text, a webring, a guestbook and "Best viewed with..." badges
-- **Windows 95/98 interface:** grey 3D buttons, navy title bars, a grey menu frame
-  with a visible frame border, and a matching music player
-- **Only system fonts**, because web fonts didn't exist yet. The font sizes
-  follow the old `<font size="1">` to `<font size="7">` scale.
-- **800x600:** the content is 760px wide, as on a typical 1999 screen
+- **GeoCities style:** a tiled star background, Times New Roman, the bright
+  named colors of HTML 3.2, black boxes with 3D borders like
+  `<table border="4" bgcolor="black">`, grooved `<hr>` lines, a marquee,
+  blinking text, a webring, a guestbook and a "Best viewed with Internet
+  Explorer" badge.
+- **Windows 95/98 interface:** grey 3D buttons, navy title bars, a grey menu
+  frame with a visible frame border, and a music player to match.
+- **No modern effects:** no rounded corners, drop shadows or transitions. The
+  only gradient is the Windows 98 title bar.
+
+### Layout
+
+| Screen              | Layout                                                                                     |
+| ------------------- | ------------------------------------------------------------------------------------------ |
+| Desktop             | Menu frame (180px) on the left, content frame on the right, like `<frameset cols="180,*">` |
+| Content             | Centered and 760px wide, the width that fit an 800x600 screen                              |
+| Below 36rem (576px) | Two-column parts (intro, movie cards, genre list) stack into one column                    |
+| Below 40rem (640px) | The menu frame moves to the top and becomes a 3.5rem bar of buttons you swipe sideways     |
+
+`nav.html` switches to its one-row layout when its frame is less than 6rem tall,
+because media queries inside an iframe measure the iframe, not the screen.
+Breakpoints can't be custom properties (`var()` doesn't work in `@media`), so
+they are written out in `styles.css`.
+
+### Colors
+
+All colors are named colors from HTML 3.2, plus the Windows 98 title bar blue.
+
+| Role                      | Token                | Color                       |
+| ------------------------- | -------------------- | --------------------------- |
+| Page background           | `--color-page`       | black `#000000`             |
+| Body text                 | `--color-text`       | white `#ffffff`             |
+| Footer and small labels   | `--color-text-muted` | silver `#c0c0c0`            |
+| Page titles (`h1`)        | `--color-heading-1`  | yellow `#ffff00`            |
+| Section titles (`h2`)     | `--color-heading-2`  | lime `#00ff00`              |
+| Links / visited / clicked | `--color-link`...    | aqua / fuchsia / red        |
+| "Come back later!"        | `--color-alert`      | red `#ff0000`               |
+| Buttons, menu, player     | `--color-chrome`     | silver `#c0c0c0`            |
+| Title bars                | `--color-titlebar-*` | navy `#000080` to `#1084d0` |
+
+Every text color passes the WCAG AA contrast minimum on its background except
+one: white title bar text over the light-blue right end of the gradient is
+4.0:1, where AA asks for 4.5:1. Most titles end before that point, but long
+titles on narrow screens reach it.
+
+### Typography
+
+Web fonts didn't exist yet, so the site only uses fonts that came with
+Windows and Mac OS.
+
+| Use                                | Token            | Font            |
+| ---------------------------------- | ---------------- | --------------- |
+| Body text                          | `--font-body`    | Times New Roman |
+| Headings                           | `--font-heading` | Impact          |
+| Title bars, "Advertisement" labels | `--font-label`   | Arial           |
+| Buttons and the menu               | `--font-ui`      | Tahoma          |
+| "Come back later!"                 | `--font-fun`     | Comic Sans MS   |
+| Marquee, counter, player time      | `--font-mono`    | Courier New     |
+
+Font sizes follow the HTML 3.2 `<font size="1">` to `<font size="7">` scale:
+10, 13, 16, 18, 24, 32 and 48px (`--font-size-1` to `--font-size-7`).
+
+### Components
+
+| Class                       | What it is                                                                          |
+| --------------------------- | ----------------------------------------------------------------------------------- |
+| `.panel`                    | Black box with a 3D border, used for most content                                   |
+| `.button`                   | Windows 95 button (on links). Pressed in when clicked or when it's the current page |
+| `.titlebar`                 | Windows 98 title bar: the menu heading and the movie titles                         |
+| `.movie`                    | Movie card: title bar, poster (with an optional "HOT!" badge) and plot              |
+| `.ad`                       | Banner ad with a small "Advertisement" label                                        |
+| `.marquee`                  | Scrolling text, like `<marquee>`                                                    |
+| `.blink`                    | Blinking text, like `<blink>`                                                       |
+| `.fun`                      | Big red Comic Sans text                                                             |
+| `.odometer`                 | Visitor counter, one cell per digit                                                 |
+| `.webring`                  | Webring box with Prev / Random / Next / List Sites links                            |
+| `.genre-list`, `.whats-new` | Home page lists: genre buttons with taglines, and the dated news list               |
+| `.merch`                    | Sunken white box in the menu frame                                                  |
+| `.player`                   | The MIDI player, styled through the `::part()`s it exposes                          |
+
+### Motion
+
+- Animated GIFs, the marquee (20s per loop) and blinking text (1s per blink).
+- Blinking stops after 5 blinks, and hovering the marquee pauses it.
+- With _reduce motion_ turned on in the OS, every animated GIF is swapped for a
+  still image, the marquee becomes a normal line of text and nothing blinks.
 
 ### Design tokens
 
-All colors, fonts, sizes, borders and timings are CSS custom properties in
+Every color, font, size, border and timing is a CSS custom property in
 `css/tokens.css`, in three layers:
 
-1. **Primitives** (`--palette-*`, `--font-family-*`, `--font-size-1` to `-7`,
-   `--size-*`): the raw values.
-2. **Semantic** (`--color-text`, `--color-link`, `--font-heading`,
-   `--space-m`, `--bevel-raised`...): what a value is for. `styles.css` mostly
-   uses these.
-3. **Component** (`--button-*`, `--titlebar-*`, `--marquee-*`, `--odometer-*`,
-   `--frame-*`): values for one component.
+1. **Primitives:** the raw values. The palette (`--palette-*`), font stacks
+   (`--font-family-*`), the `<font size>` scale (`--font-size-1` to `-7`) and
+   spacing steps (`--size-1` to `-5`).
+2. **Semantic:** what a value is for, like `--color-link`, `--font-heading`,
+   `--space-m`, `--bevel-raised` and `--border-table`. `styles.css` mostly uses
+   these.
+3. **Component:** values for one component, like `--button-*`, `--titlebar-*`,
+   `--marquee-*`, `--odometer-*`, `--frame-*` and `--poster-width`.
 
-Each layer only uses the one above it, and `styles.css` has no hard-coded colors.
-To change the look, change a semantic token: for example, set
-`--color-heading-2: var(--palette-fuchsia)` to make every `h2` pink.
+Each layer only uses the layer above it, and `styles.css` has no hard-coded
+colors. To change the look, change a semantic token. For example:
+
+```css
+/* in css/tokens.css */
+--color-heading-2: var(--palette-fuchsia); /* every h2 turns pink */
+--font-body: var(--font-family-arial); /* body text in Arial */
+```
+
+Only add or change a primitive when you need a new raw value, like a new color.
 
 ### Accessibility
 
 - Semantic HTML (`nav`, `main`, `article`, `figure`, lists) and descriptive alt texts
 - Frames have titles, links are real links, and keyboard focus is visible
-- Visitors with _reduce motion_ turned on in their OS get still images instead of
-  animations (`<picture>` with a `prefers-reduced-motion` source), a still
-  marquee and no blinking
-- Blinking text stops after 5 blinks, and hovering the marquee pauses it
+- Reduced motion is supported (see Motion). The still images use `<picture>`
+  with a `prefers-reduced-motion` source.
 
 ### Security
 
