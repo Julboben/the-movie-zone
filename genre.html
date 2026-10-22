@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'sha256-iN7wpJdxHlpujRppkOA8N0+Mzp0ZqZr3lCtxM00Y63c='; style-src 'self' 'unsafe-inline'; connect-src 'self' https://storage.googleapis.com; worker-src blob:; object-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <title>The Movie Zone</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/genres.js" defer></script>
+    <script src="js/genre-page.js" defer></script>
+  </head>
+
+  <!-- One page for every genre. js/genre-page.js fills it in from
+       js/genres.js, based on the URL: genre.html?genre=action -->
+  <body id="top">
+    <main class="page">
+      <div class="container center logo">
+        <!-- Text GIF!! https://en.bloggif.com/text?id=25273baf507bc4f6ddb55de20f4502ad -->
+        <a href="home.html">
+          <picture>
+            <source
+              srcset="images/still/logo.webp"
+              media="(prefers-reduced-motion: reduce)"
+            />
+            <img
+              src="images/logo.gif"
+              width="940"
+              height="104"
+              alt="The Movie Zone"
+            />
+          </picture>
+        </a>
+      </div>
+
+      <div class="container marquee">
+        <p>
+          *** Welcome to THE MOVIE ZONE!!! *** Your #1 source for Sci-Fi movies
+          on the Information Superhighway *** Now with MIDI music! *** Don't
+          forget to sign our Guestbook! ***
+        </p>
+      </div>
+
+      <section class="container">
+        <h1 class="center"></h1>
+        <div class="panel">
+          <div id="intro" class="columns"></div>
+        </div>
+        <noscript>
+          <p class="panel center">
+            Your browser does not support JavaScript! Turn it on to see this
+            page.
+          </p>
+        </noscript>
+      </section>
+
+      <div class="container center">
+        <picture>
+          <source
+            srcset="images/still/new.webp"
+            media="(prefers-reduced-motion: reduce)"
+          />
+          <img
+            class="new"
+            src="images/new.webp"
+            width="600"
+            height="335"
+            alt=""
+          />
+        </picture>
+      </div>
+
+      <section class="container">
+        <h2 class="center">Top 3 <span class="genre-plural"></span></h2>
+        <div id="top-movies"></div>
+      </section>
+
+      <template id="movie-template">
+        <article class="movie">
+          <h3 class="titlebar"></h3>
+          <figure class="movie-body">
+            <div class="poster">
+              <picture class="hot">
+                <source
+                  srcset="images/still/hot.webp"
+                  media="(prefers-reduced-motion: reduce)"
+                />
+                <img src="images/hot.gif" width="200" height="94" alt="" />
+              </picture>
+              <img class="poster-img" loading="lazy" />
+            </div>
+            <figcaption>
+              <p></p>
+              <a class="button" target="_blank" rel="noopener">Read More</a>
+            </figcaption>
+          </figure>
+        </article>
+      </template>
+
+      <template id="ad-template">
+        <div class="ad">
+          <small>Advertisement</small>
+          <a href="under-construction.html">
+            <picture>
+              <source media="(prefers-reduced-motion: reduce)" />
+              <img width="468" height="60" loading="lazy" />
+            </picture>
+          </a>
+        </div>
+      </template>
+
+      <hr class="container" />
+
+      <section class="container center">
+        <h2><span class="genre-plural"></span> You Didn't Know Existed</h2>
+        <div class="panel">
+          <picture>
+            <source
+              srcset="images/still/under-construction.webp"
+              media="(prefers-reduced-motion: reduce)"
+            />
+            <img
+              class="construction"
+              src="images/under-construction.gif"
+              width="400"
+              height="125"
+              loading="lazy"
+              alt="Under construction"
+            />
+          </picture>
+          <p class="fun blink">Come back later!</p>
+        </div>
+      </section>
+
+      <div class="container center">
+        <a href="#top">
+          <picture>
+            <source
+              srcset="images/still/rocket.webp"
+              media="(prefers-reduced-motion: reduce)"
+            />
+            <img
+              class="rocket"
+              src="images/rocket.webp"
+              width="200"
+              height="200"
+              loading="lazy"
+              alt="Back to top"
+            />
+          </picture>
+        </a>
+      </div>
+    </main>
+
+    <footer class="container center site-footer">
+      <hr />
+      <a href="https://www.microsoft.com/edge" target="_blank" rel="noopener">
+        <picture>
+          <source
+            srcset="images/still/internet-ex.webp"
+            media="(prefers-reduced-motion: reduce)"
+          />
+          <img
+            class="ie-badge"
+            src="images/internet-ex.webp"
+            width="240"
+            height="84"
+            loading="lazy"
+            alt="Get Microsoft Internet Explorer"
+          />
+        </picture>
+      </a>
+      <p>Best viewed with Internet Explorer 5.0 at 800x600</p>
+      <p>
+        <a class="button" href="under-construction.html">
+          <img src="images/aol.png" width="20" height="20" alt="" />
+          AOL Instant Messenger
+        </a>
+      </p>
+      <p>
+        &copy; 1999 The Movie Zone. All rights reserved.<br />
+        Last updated: October 22, 1999
+      </p>
+    </footer>
+  </body>
+</html>

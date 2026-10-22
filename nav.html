@@ -10,26 +10,55 @@
     />
     <title>Menu - The Movie Zone</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/tokens.css" />
     <link rel="stylesheet" href="css/styles.css" />
     <script src="js/nav.js" defer></script>
   </head>
 
   <body class="nav-page">
     <nav aria-labelledby="menu-heading">
-      <h2 id="menu-heading">Menu</h2>
-      <!-- Links open in the "main" frame of index.html -->
+      <h2 id="menu-heading" class="titlebar">Menu</h2>
+      <!-- Links open in the "main" frame of index.html. js/nav.js keeps
+           aria-current on the link for the page shown there. -->
       <ul class="menu">
-        <li><a href="main.html" target="main">Home</a></li>
-        <li><a href="under-construction.html" target="main">Action</a></li>
-        <li><a href="under-construction.html" target="main">Comedy</a></li>
-        <li><a href="under-construction.html" target="main">Drama</a></li>
-        <li><a href="under-construction.html" target="main">Musical</a></li>
         <li>
-          <a href="main.html" target="main" aria-current="page"
+          <a class="button" href="home.html" target="main" aria-current="page"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a class="button" href="genre.html?genre=action" target="main"
+            >Action</a
+          >
+        </li>
+        <li>
+          <a class="button" href="genre.html?genre=comedy" target="main"
+            >Comedy</a
+          >
+        </li>
+        <li>
+          <a class="button" href="genre.html?genre=drama" target="main"
+            >Drama</a
+          >
+        </li>
+        <li>
+          <a class="button" href="genre.html?genre=musical" target="main"
+            >Musical</a
+          >
+        </li>
+        <li>
+          <a
+            class="button"
+            href="genre.html?genre=science-fiction"
+            target="main"
             >Science Fiction</a
           >
         </li>
-        <li><a href="under-construction.html" target="main">Thriller</a></li>
+        <li>
+          <a class="button" href="genre.html?genre=thriller" target="main"
+            >Thriller</a
+          >
+        </li>
       </ul>
     </nav>
 
@@ -79,7 +108,7 @@
         </picture>
       </a>
 
-      <div class="merch panel">
+      <div class="merch">
         <p>Find Our Official <b>The Movie Zone</b> Merch Here!</p>
         <a href="under-construction.html" target="main">
           <picture>

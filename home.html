@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'sha256-iN7wpJdxHlpujRppkOA8N0+Mzp0ZqZr3lCtxM00Y63c='; style-src 'self' 'unsafe-inline'; connect-src 'self' https://storage.googleapis.com; worker-src blob:; object-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <title>Home - The Movie Zone</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <!-- MIDI player (https://github.com/cifkao/html-midi-player) and the
+         libraries it needs. Order matters: quiet-audio.js must run first. -->
+    <script src="js/quiet-audio.js" defer></script>
+    <script src="vendor/tone/Tone.js" defer></script>
+    <script src="vendor/magenta/core.js" defer></script>
+    <script src="vendor/html-midi-player/midi-player.min.js" defer></script>
+  </head>
+
+  <body id="top">
+    <main class="page">
+      <div class="container center logo">
+        <!-- Text GIF!! https://en.bloggif.com/text?id=25273baf507bc4f6ddb55de20f4502ad -->
+        <a href="home.html">
+          <picture>
+            <source
+              srcset="images/still/logo.webp"
+              media="(prefers-reduced-motion: reduce)"
+            />
+            <img
+              src="images/logo.gif"
+              width="940"
+              height="104"
+              alt="The Movie Zone"
+            />
+          </picture>
+        </a>
+      </div>
+
+      <div class="container marquee">
+        <p>
+          *** Welcome to THE MOVIE ZONE!!! *** Your #1 source for Sci-Fi movies
+          on the Information Superhighway *** Now with MIDI music! *** Don't
+          forget to sign our Guestbook! ***
+        </p>
+      </div>
+
+      <section class="container">
+        <h1 class="center">Welcome to The Movie Zone!</h1>
+        <div class="panel">
+          <p>
+            Hi, and welcome to <b>The Movie Zone</b>, your #1 source for movies
+            on the World Wide Web! Here you'll find the greatest movies of all
+            time, sorted by genre, so you always know what to rent at the video
+            store this weekend.
+          </p>
+          <p>
+            Pick a genre from the menu or from the list below. And turn your
+            speakers ON, because this page has MUSIC!
+          </p>
+          <hr />
+          <div class="now-playing">
+            <p>&#9835; Now playing: <b>Blade Runner</b> (MIDI)</p>
+            <midi-player
+              class="player"
+              src="music/blade-runner.mid"
+              sound-font
+            ></midi-player>
+          </div>
+        </div>
+      </section>
+
+      <section class="container">
+        <h2 class="center">Pick a Genre</h2>
+        <ul class="panel genre-list">
+          <li>
+            <a class="button" href="genre.html?genre=action">Action</a>
+            Explosions, car chases and one-liners
+          </li>
+          <li>
+            <a class="button" href="genre.html?genre=comedy">Comedy</a>
+            Guaranteed to make you LOL
+          </li>
+          <li>
+            <a class="button" href="genre.html?genre=drama">Drama</a>
+            Grab a box of tissues
+          </li>
+          <li>
+            <a class="button" href="genre.html?genre=musical">Musical</a>
+            Sing and dance along
+          </li>
+          <li>
+            <a class="button" href="genre.html?genre=science-fiction"
+              >Science Fiction</a
+            >
+            Aliens, robots and spaceships
+          </li>
+          <li>
+            <a class="button" href="genre.html?genre=thriller">Thriller</a>
+            Don't watch alone!
+          </li>
+        </ul>
+      </section>
+
+      <div class="container center">
+        <picture>
+          <source
+            srcset="images/still/new.webp"
+            media="(prefers-reduced-motion: reduce)"
+          />
+          <img
+            class="new"
+            src="images/new.webp"
+            width="600"
+            height="335"
+            alt=""
+          />
+        </picture>
+      </div>
+
+      <section class="container">
+        <h2 class="center">What's New?</h2>
+        <ul class="panel whats-new">
+          <li>
+            <b>10/22/99:</b> All six genres are finally online! Check out the
+            new <a href="genre.html?genre=thriller">Thriller</a> page, if you
+            dare...
+          </li>
+          <li><b>10/15/99:</b> Added movie posters to all the Top 3 lists.</li>
+          <li><b>10/01/99:</b> The Movie Zone now has MIDI music!</li>
+          <li><b>09/20/99:</b> We joined the Sci-Fi Movies WebRing.</li>
+          <li><b>09/01/99:</b> The Movie Zone is born!</li>
+        </ul>
+      </section>
+
+      <section class="container">
+        <h2 class="center">Movie News</h2>
+        <div class="panel">
+          <p>
+            <b>Star Wars: Episode I &ndash; The Phantom Menace</b> opened in
+            theaters on May 19, 1999. Did you camp out for tickets? Sign our
+            Guestbook and tell us what you thought of Jar Jar!
+          </p>
+          <p>
+            <b>The Matrix</b> came out this spring and everybody is still asking
+            the same question: what IS the Matrix?
+          </p>
+        </div>
+      </section>
+
+      <hr class="container" />
+
+      <section class="container center">
+        <div class="panel webring">
+          <p>
+            This <b>Sci-Fi Movies WebRing</b> site is owned by
+            <b>The Movie Zone</b>.
+          </p>
+          <p>
+            [<a href="under-construction.html">&lt;&lt; Prev</a>] [<a
+              href="under-construction.html"
+              >Random</a
+            >] [<a href="under-construction.html">Next &gt;&gt;</a>] [<a
+              href="under-construction.html"
+              >List Sites</a
+            >]
+          </p>
+        </div>
+
+        <p>
+          <a href="under-construction.html">Sign my Guestbook!</a> |
+          <a href="under-construction.html">View my Guestbook</a> |
+          <a href="under-construction.html">E-mail the Webmaster</a>
+        </p>
+
+        <!-- Just for show: the number never changes -->
+        <p>
+          You are visitor
+          <span class="odometer" role="img" aria-label="number 420">
+            <span>0</span><span>0</span><span>0</span><span>4</span
+            ><span>2</span><span>0</span>
+          </span>
+        </p>
+
+        <a href="#top">
+          <picture>
+            <source
+              srcset="images/still/rocket.webp"
+              media="(prefers-reduced-motion: reduce)"
+            />
+            <img
+              class="rocket"
+              src="images/rocket.webp"
+              width="200"
+              height="200"
+              loading="lazy"
+              alt="Back to top"
+            />
+          </picture>
+        </a>
+      </section>
+    </main>
+
+    <footer class="container center site-footer">
+      <hr />
+      <a href="https://www.microsoft.com/edge" target="_blank" rel="noopener">
+        <picture>
+          <source
+            srcset="images/still/internet-ex.webp"
+            media="(prefers-reduced-motion: reduce)"
+          />
+          <img
+            class="ie-badge"
+            src="images/internet-ex.webp"
+            width="240"
+            height="84"
+            loading="lazy"
+            alt="Get Microsoft Internet Explorer"
+          />
+        </picture>
+      </a>
+      <p>Best viewed with Internet Explorer 5.0 at 800x600</p>
+      <p>
+        <a class="button" href="under-construction.html">
+          <img src="images/aol.png" width="20" height="20" alt="" />
+          AOL Instant Messenger
+        </a>
+      </p>
+      <p>
+        &copy; 1999 The Movie Zone. All rights reserved.<br />
+        Last updated: October 22, 1999
+      </p>
+    </footer>
+  </body>
+</html>

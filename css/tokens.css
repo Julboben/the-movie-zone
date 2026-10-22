@@ -1,0 +1,156 @@
+/* Design tokens for The Movie Zone.
+
+   Three layers. Each layer only uses tokens from the layer above it:
+   1. Primitives: raw values (the palette, font stacks, the old <font size> scale).
+   2. Semantic:   what a value is for (text, links, headings, surfaces...).
+                  styles.css mostly uses these.
+   3. Component:  values that belong to one component (button, title bar...).
+
+   To restyle the site, change semantic tokens first. Only touch primitives to
+   add or change a raw value.
+
+   Breakpoints can't be custom properties (they don't work in @media), so they
+   are written out in styles.css: 36rem (two columns) and 40rem (phone frames). */
+
+:root {
+  /* ---------- 1. Primitives ---------- */
+
+  /* Named colors from HTML 3.2, plus the Windows 98 title bar blue */
+  --palette-black: #000000;
+  --palette-white: #ffffff;
+  --palette-silver: #c0c0c0;
+  --palette-gray: #808080;
+  --palette-gray-light: #dfdfdf;
+  --palette-navy: #000080;
+  --palette-blue-win98: #1084d0;
+  --palette-maroon: #800000;
+  --palette-red: #ff0000;
+  --palette-yellow: #ffff00;
+  --palette-lime: #00ff00;
+  --palette-aqua: #00ffff;
+  --palette-fuchsia: #ff00ff;
+
+  /* System fonts only: web fonts didn't exist in the 90's */
+  --font-family-times: "Times New Roman", Times, serif;
+  --font-family-arial: Arial, Helvetica, sans-serif;
+  --font-family-impact: Impact, Haettenschweiler, "Arial Black", sans-serif;
+  --font-family-comic: "Comic Sans MS", "Comic Sans", "Comic Neue", cursive;
+  --font-family-courier: "Courier New", Courier, monospace;
+  --font-family-tahoma: Tahoma, "MS Sans Serif", Geneva, Verdana, sans-serif;
+
+  /* The HTML 3.2 <font size="1"> to <font size="7"> scale */
+  --font-size-1: 0.625rem; /* 10px */
+  --font-size-2: 0.8125rem; /* 13px */
+  --font-size-3: 1rem; /* 16px, the default */
+  --font-size-4: 1.125rem; /* 18px */
+  --font-size-5: 1.5rem; /* 24px */
+  --font-size-6: 2rem; /* 32px */
+  --font-size-7: 3rem; /* 48px */
+
+  --size-1: 0.25rem; /* 4px */
+  --size-2: 0.5rem; /* 8px */
+  --size-3: 1rem; /* 16px */
+  --size-4: 2rem; /* 32px */
+  --size-5: 3rem; /* 48px */
+
+  /* ---------- 2. Semantic ---------- */
+
+  --color-page: var(--palette-black);
+  --color-text: var(--palette-white);
+  --color-text-muted: var(--palette-silver);
+  --color-heading-1: var(--palette-yellow);
+  --color-heading-2: var(--palette-lime);
+  --color-alert: var(--palette-red);
+  --color-link: var(--palette-aqua);
+  --color-link-visited: var(--palette-fuchsia);
+  --color-link-active: var(--palette-red);
+
+  /* Windows 95 grey interface: buttons, the menu frame, the music player */
+  --color-chrome: var(--palette-silver);
+  --color-chrome-text: var(--palette-black);
+  --color-chrome-emphasis: var(--palette-maroon);
+  --color-field: var(--palette-white);
+  --color-titlebar-start: var(--palette-navy);
+  --color-titlebar-end: var(--palette-blue-win98);
+  --color-titlebar-text: var(--palette-white);
+
+  /* The four edge colors of a Windows 95 3D bevel */
+  --color-bevel-highlight: var(--palette-white);
+  --color-bevel-light: var(--palette-gray-light);
+  --color-bevel-shadow: var(--palette-gray);
+  --color-bevel-dark: var(--palette-black);
+
+  --font-body: var(--font-family-times);
+  --font-heading: var(--font-family-impact);
+  --font-label: var(--font-family-arial);
+  --font-ui: var(--font-family-tahoma);
+  --font-fun: var(--font-family-comic);
+  --font-mono: var(--font-family-courier);
+
+  --font-size-tiny: var(--font-size-1);
+  --font-size-small: var(--font-size-2);
+  --font-size-body: var(--font-size-3);
+  --font-size-h3: var(--font-size-4);
+  --font-size-fun: var(--font-size-5);
+  --font-size-h2: var(--font-size-6);
+  --font-size-h1: var(--font-size-7);
+
+  --space-xs: var(--size-1);
+  --space-s: var(--size-2);
+  --space-m: var(--size-3);
+  --space-l: var(--size-4);
+  --space-xl: var(--size-5);
+
+  --bevel-raised: inset -1px -1px var(--color-bevel-dark),
+    inset 1px 1px var(--color-bevel-highlight),
+    inset -2px -2px var(--color-bevel-shadow),
+    inset 2px 2px var(--color-bevel-light);
+  --bevel-sunken: inset -1px -1px var(--color-bevel-highlight),
+    inset 1px 1px var(--color-bevel-dark),
+    inset -2px -2px var(--color-bevel-light),
+    inset 2px 2px var(--color-bevel-shadow);
+  /* Like <table border="4"> */
+  --border-table: 4px ridge var(--color-chrome);
+
+  /* 760px: fits an 800x600 screen, the standard of the day */
+  --page-width: 47.5rem;
+  --image-page-background: url("../images/bg-stars.webp");
+
+  --duration-blink: 1s;
+  --duration-marquee: 20s;
+
+  /* ---------- 3. Component ---------- */
+
+  --button-background: var(--color-chrome);
+  --button-text: var(--color-chrome-text);
+  --button-font: var(--font-ui);
+  --button-font-size: var(--font-size-small);
+  --button-padding: var(--space-xs) var(--space-m);
+
+  --titlebar-background: linear-gradient(
+    90deg,
+    var(--color-titlebar-start),
+    var(--color-titlebar-end)
+  );
+  --titlebar-text: var(--color-titlebar-text);
+  --titlebar-font: var(--font-label);
+  --titlebar-font-size: var(--font-size-h3);
+
+  /* Like <frameset cols="180,*"> */
+  --frame-menu-width: 11.25rem;
+  /* Menu frame height on phones. nav.html switches to its one-row layout
+     below 6rem, so keep this smaller than that. */
+  --frame-menu-height-compact: 3.5rem;
+  --frame-border: 6px ridge var(--color-chrome);
+
+  --poster-width: 12rem;
+
+  --marquee-background: var(--color-page);
+  --marquee-text: var(--color-heading-1);
+  --marquee-font: var(--font-mono);
+
+  --odometer-digit-background: var(--color-page);
+  --odometer-digit-text: var(--color-text);
+  --odometer-font: var(--font-mono);
+  --odometer-font-size: var(--font-size-fun);
+}

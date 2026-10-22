@@ -8,14 +8,15 @@
       http-equiv="Content-Security-Policy"
       content="default-src 'self'; script-src 'self' 'sha256-iN7wpJdxHlpujRppkOA8N0+Mzp0ZqZr3lCtxM00Y63c='; style-src 'self' 'unsafe-inline'; connect-src 'self' https://storage.googleapis.com; worker-src blob:; object-src 'none'; base-uri 'none'; form-action 'none'"
     />
-    <title>Science Fiction - The Movie Zone</title>
+    <title>The Movie Zone</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/tokens.css" />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
 
   <!-- A 90's style "frameset": the menu loads its links into the frame named "main". -->
   <body class="frameset">
     <iframe src="nav.html" title="Menu"></iframe>
-    <iframe src="main.html" title="Content" name="main"></iframe>
+    <iframe src="home.html" title="Content" name="main"></iframe>
   </body>
 </html>
