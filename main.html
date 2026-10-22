@@ -1,273 +1,222 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="robots" content="noindex, nofollow" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/styles.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-      crossorigin="anonymous"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
+    <meta name="robots" content="noindex, nofollow" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'sha256-iN7wpJdxHlpujRppkOA8N0+Mzp0ZqZr3lCtxM00Y63c='; style-src 'self' 'unsafe-inline'; connect-src 'self' https://storage.googleapis.com; worker-src blob:; object-src 'none'; base-uri 'none'; form-action 'none'"
     />
     <title>Science Fiction - The Movie Zone</title>
-    <!-- JavaScript Bundle with Popper -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.23.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.4.0"></script>
-    <script
-      src="https://kit.fontawesome.com/74a3c36122.js"
-      crossorigin="anonymous"
-    ></script>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <!-- MIDI player (https://github.com/cifkao/html-midi-player) and the
+         libraries it needs. Order matters: quiet-audio.js must run first. -->
+    <script src="js/quiet-audio.js" defer></script>
+    <script src="vendor/tone/Tone.js" defer></script>
+    <script src="vendor/magenta/core.js" defer></script>
+    <script src="vendor/html-midi-player/midi-player.min.js" defer></script>
+    <script src="js/movies.js" defer></script>
   </head>
 
-  <body>
-    <main>
-      <div class="container text-center pt-5">
+  <body id="top">
+    <main class="page">
+      <div class="container center logo">
         <!-- Text GIF!! https://en.bloggif.com/text?id=25273baf507bc4f6ddb55de20f4502ad -->
-        <a href="#"
-          ><img
-            src="images/logo1.gif"
-            class="brand-logo"
-            alt="the-movie-zone-logo"
-        /></a>
+        <a href="main.html">
+          <picture>
+            <source
+              srcset="images/still/logo.webp"
+              media="(prefers-reduced-motion: reduce)"
+            />
+            <img
+              src="images/logo.gif"
+              width="940"
+              height="104"
+              alt="The Movie Zone"
+            />
+          </picture>
+        </a>
       </div>
+
       <section>
-        <div class="container bg-gradient">
+        <div class="container panel">
           <h1>Science Fiction</h1>
-          <div class="row">
-            <div class="col-sm">
-              <p>
-                Science fiction film is a film genre that uses science fiction:
-                speculative, science-based depictions of phenomena that are not
-                necessarily accepted by mainstream science, such as
-                extraterrestrial life forms, alien worlds, extrasensory
-                perception, and time travel, often along with futuristic
-                elements such as spacecraft, robots, or other technologies.
-                Science fiction films have often been used to focus on political
-                or social issues, and to explore philosophical issues like the
-                human condition. In many cases, tropes derived from written
-                science fiction may be used by filmmakers ignorant of or at best
-                indifferent to the standards of scientific plausibility and plot
-                logic to which written science fiction is traditionally held.
-              </p>
-            </div>
-            <div class="col-sm">
-              <p>
-                The genre has existed since the early years of silent cinema,
-                when Georges Melies' A Trip to the Moon (1902) amazed audiences
-                with its trick photography effects. The next major example in
-                the genre was the 1927 film Metropolis. From the 1930s to the
-                1950s, the genre consisted mainly of low-budget B-movies. After
-                Stanley Kubrick's 1968 landmark 2001: A Space Odyssey, the
-                science fiction film genre was taken more seriously. In the late
-                1970s, big-budget science fiction films filled with special
-                effects became popular with audiences after the success of Star
-                Wars and paved the way for the blockbuster hits of subsequent
-                decades.
-              </p>
-            </div>
+          <div class="columns">
+            <p>
+              Science fiction film is a film genre that uses science fiction:
+              speculative, science-based depictions of phenomena that are not
+              necessarily accepted by mainstream science, such as
+              extraterrestrial life forms, alien worlds, extrasensory
+              perception, and time travel, often along with futuristic elements
+              such as spacecraft, robots, or other technologies. Science fiction
+              films have often been used to focus on political or social issues,
+              and to explore philosophical issues like the human condition. In
+              many cases, tropes derived from written science fiction may be
+              used by filmmakers ignorant of or at best indifferent to the
+              standards of scientific plausibility and plot logic to which
+              written science fiction is traditionally held.
+            </p>
+            <p>
+              The genre has existed since the early years of silent cinema, when
+              Georges Méliès' A Trip to the Moon (1902) amazed audiences with
+              its trick photography effects. The next major example in the genre
+              was the 1927 film Metropolis. From the 1930s to the 1950s, the
+              genre consisted mainly of low-budget B-movies. After Stanley
+              Kubrick's 1968 landmark 2001: A Space Odyssey, the science fiction
+              film genre was taken more seriously. In the late 1970s, big-budget
+              science fiction films filled with special effects became popular
+              with audiences after the success of Star Wars and paved the way
+              for the blockbuster hits of subsequent decades.
+            </p>
           </div>
-          <div id="section3">
-            <midi-player
-              src="music/blade-runner.mid"
-              sound-font
-              visualizer="#section3 midi-visualizer"
-            >
-            </midi-player>
-          </div>
+          <midi-player
+            class="player"
+            src="music/blade-runner.mid"
+            sound-font
+          ></midi-player>
         </div>
-        <script>
-          MIDIjs.play("/sound/indiana.mid");
-        </script>
       </section>
-      <div class="container text-center">
-        <img class="new-img" src="images/new.gif" alt="" />
+
+      <div class="container center">
+        <picture>
+          <source
+            srcset="images/still/new.webp"
+            media="(prefers-reduced-motion: reduce)"
+          />
+          <img
+            class="new"
+            src="images/new.webp"
+            width="600"
+            height="335"
+            alt=""
+          />
+        </picture>
       </div>
+
       <section>
         <div class="container">
-          <h2 class="text-center">Top 3 Science Fiction Movies</h2>
-          <div class="wrapper bg-gradient">
-            <h3>Blade Runner (1982)</h3>
-            <div class="row">
-              <div class="col-sm-6">
-                <img
-                  id="hot"
-                  class="position-absolute"
-                  src="images/hot.gif"
-                  width="100px"
-                  alt=""
-                />
-                <img
-                  src="images/blade-runner.jpg"
-                  class="img-fluid"
-                  alt="Blade Runner"
-                />
-              </div>
-              <div class="col-sm-6">
-                <figcaption class="pt-4 pt-md-0">
-                  In a cyberpunk vision of the future, man has developed the
-                  technology to create replicants, human clones used to serve in
-                  the colonies outside Earth but with fixed lifespans. In Los
-                  Angeles, 2019, Deckard is a Blade Runner, a cop who
-                  specialises in terminating replicants. Originally in
-                  retirement, he is forced to re-enter the force when five
-                  replicants escape from an offworld colony to Earth.
-                </figcaption>
-                <button class="mt-4" onclick="window.location.href='#';">
-                  <span>Read More</span>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="container text-center ad">
-            <a href="#"
-              ><img src="images/yahoo.gif" class="img-fluid" alt="yahoo"
-            /></a>
-          </div>
-          <div class="wrapper bg-gradient">
-            <h3>2001: A Space Odyssey (1968)</h3>
-            <div class="row">
-              <div class="col-sm-6">
-                <img
-                  src="images/2001-space-odyssey.jpg"
-                  class="img-fluid"
-                  alt="2001: A Space Odyssey"
-                />
-              </div>
-              <div class="col-sm-6">
-                <figcaption class="pt-4 pt-md-0">
-                  When a large black monolith is found beneath the surface of
-                  the moon, the reaction immediately is that it was
-                  intentionally buried. When the point of origin is confirmed as
-                  Jupiter, an expedition is sent in hopes of finding the source.
-                  When Dr David Bowman discovers faults in the expeditionary
-                  space craft's communications system, he discovers more than he
-                  ever wanted to know.
-                </figcaption>
-                <button class="mt-4" onclick="window.location.href='#';">
-                  <span>Read More</span>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="container text-center ad">
-            <a href="#"
-              ><img src="images/casino.gif" class="img-fluid" alt="casino"
-            /></a>
-          </div>
-          <div class="wrapper bg-gradient">
-            <h3>Alien (1979)</h3>
-            <div class="row">
-              <div class="col-sm-6">
-                <img src="images/alien.jpg" class="img-fluid" alt="Alien" />
-              </div>
-              <div class="col-sm-6">
-                <figcaption class="pt-4 pt-md-0">
-                  When commercial towing vehicle Nostromo, heading back to
-                  Earth, intercepts an SoS signal from a nearby planet, the crew
-                  are under obligation to investigate. After a bad landing on
-                  the planet, some crew members leave the ship to explore the
-                  area. At the same time as they discover a hive colony of some
-                  unknown creature, the ship's computer deciphers the message to
-                  be a warning, not a call for help. When one of the eggs is
-                  disturbed, the crew do not know the danger they are in until
-                  it is too late.
-                </figcaption>
-                <button class="mt-4" onclick="window.location.href='#';">
-                  <span>Read More</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="container text-center ad">
-          <a href="#"
-            ><img src="images/pets.gif" class="img-fluid" alt="pets"
-          /></a>
+          <h2 class="center">Top 3 Science Fiction Movies</h2>
+          <!-- Filled in by js/movies.js from the templates below -->
+          <div id="top-movies"></div>
+          <noscript>
+            <p class="panel center">
+              Your browser does not support JavaScript! Turn it on to see the
+              list.
+            </p>
+          </noscript>
         </div>
       </section>
+
+      <template id="movie-template">
+        <article class="panel movie">
+          <h3></h3>
+          <figure class="columns">
+            <div class="poster">
+              <picture class="hot">
+                <source
+                  srcset="images/still/hot.webp"
+                  media="(prefers-reduced-motion: reduce)"
+                />
+                <img src="images/hot.gif" width="200" height="94" alt="" />
+              </picture>
+              <img class="poster-img" width="960" height="540" loading="lazy" />
+            </div>
+            <figcaption>
+              <p></p>
+              <a class="button" target="_blank" rel="noopener">Read More</a>
+            </figcaption>
+          </figure>
+        </article>
+      </template>
+
+      <template id="ad-template">
+        <a class="ad" href="under-construction.html">
+          <picture>
+            <source media="(prefers-reduced-motion: reduce)" />
+            <img width="468" height="60" loading="lazy" />
+          </picture>
+        </a>
+      </template>
+
       <section>
-        <div class="container text-center">
+        <div class="container center">
           <h2>Top Science Fiction Movies You Didn't Know Existed</h2>
-          <div class="wrapper bg-gradient">
-            <img
-              class="construction-img"
-              src="images/under-construction1.gif"
-              alt=""
-            />
+          <div class="panel">
+            <picture>
+              <source
+                srcset="images/still/under-construction.webp"
+                media="(prefers-reduced-motion: reduce)"
+              />
+              <img
+                class="construction"
+                src="images/under-construction.gif"
+                width="400"
+                height="125"
+                loading="lazy"
+                alt="Under construction"
+              />
+            </picture>
             <p>Come back later!</p>
           </div>
         </div>
       </section>
-      <div class="container text-center">
-        <a href="#"
-          ><img
-            src="images/rocket.gif"
-            class="img-fluid"
-            width="10%"
-            alt="rocket"
-        /></a>
+
+      <div class="container center">
+        <a href="#top">
+          <picture>
+            <source
+              srcset="images/still/rocket.webp"
+              media="(prefers-reduced-motion: reduce)"
+            />
+            <img
+              class="rocket"
+              src="images/rocket.webp"
+              width="200"
+              height="200"
+              loading="lazy"
+              alt="Back to top"
+            />
+          </picture>
+        </a>
       </div>
-      <section>
-        <div class="container text-center counter">
-          <div id="sfccpw6yh93s9blk1347h7a1w3lxzcg2dmk"></div>
-          <script
-            type="text/javascript"
-            src="https://counter2.stat.ovh/private/counter.js?c=cpw6yh93s9blk1347h7a1w3lxzcg2dmk&down=async"
-            async
-          ></script>
-          <noscript
-            ><a href="https://www.freecounterstat.com" title="web counters"
-              ><img
-                src="https://counter2.stat.ovh/private/freecounterstat.php?c=cpw6yh93s9blk1347h7a1w3lxzcg2dmk"
-                border="0"
-                title="web counters"
-                alt="web counters" /></a
-          ></noscript>
-        </div>
+
+      <!-- Just for show: the number never changes -->
+      <section class="container center">
+        <p>
+          You are visitor
+          <span class="odometer" role="img" aria-label="number 420">
+            <span>0</span><span>0</span><span>0</span><span>4</span
+            ><span>2</span><span>0</span>
+          </span>
+        </p>
       </section>
     </main>
-    <footer class="bg-black bg-gradient d-flex align-items-center">
+
+    <footer class="site-footer">
       <div class="container">
-        <div class="row">
-          <div class="col-sm-4">
-            <p>&copy; 1999 The Movie Zone</p>
-          </div>
-          <div class="col-sm-4 pb-2 text-lg-center">
-            <a href="https://www.microsoft.com/edge" target="_blank"
-              ><img src="images/internet-ex.gif" width="100px" alt=""
-            /></a>
-          </div>
-          <div class="col-sm-4 pb-2 text-lg-end">
-            <button onclick="window.location.href='#';">
-              <img src="images/aol.png" width="20px" alt="" /><span>
-                AOL Instant Messenger</span
-              >
-            </button>
-            <button class="d-none" onclick="window.location.href='#';">
-              <i class="fab fa-facebook-f"></i
-              ><span> AOL Instant Messenger</span>
-            </button>
-            <button class="d-none" onclick="window.location.href='#';">
-              <i class="fab fa-twitter"></i><span> Twitter</span>
-            </button>
-            <button class="d-none" onclick="window.location.href='#';">
-              <i class="fab fa-instagram"></i><span> Instagram</span>
-            </button>
-          </div>
-        </div>
+        <p>&copy; 1999 The Movie Zone</p>
+        <a href="https://www.microsoft.com/edge" target="_blank" rel="noopener">
+          <picture>
+            <source
+              srcset="images/still/internet-ex.webp"
+              media="(prefers-reduced-motion: reduce)"
+            />
+            <img
+              class="ie-badge"
+              src="images/internet-ex.webp"
+              width="240"
+              height="84"
+              loading="lazy"
+              alt="Get Microsoft Internet Explorer"
+            />
+          </picture>
+        </a>
+        <a class="button" href="under-construction.html">
+          <img src="images/aol.png" width="20" height="20" alt="" />
+          AOL Instant Messenger
+        </a>
       </div>
     </footer>
   </body>
